@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GastoService } from '../gasto.service';
+import { UserService } from '../user.service';
+
+type Gasto = any;
+type User = any;
 
 @Component({
   selector: 'app-reporte',
@@ -6,5 +11,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./reporte.component.css']
 })
 export class ReporteComponent {
-
+  gastos: Gasto[] = [];
+  users: User[] = [];
+  constructor(private gastoService: GastoService, private userService: UserService) {
+    this.gastoService.obtenerDatos().subscribe(data => {
+      console.log(data);
+      this.gastos = data;
+    });
+    
+    this.userService.obtenerDatos().subscribe(data => {
+      console.log(data);
+      this.users = data;
+    });
+  }
 }

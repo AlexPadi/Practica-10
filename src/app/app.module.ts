@@ -9,6 +9,12 @@ import { MenuComponent } from './menu/menu.component';
 import { InformacionComponent } from './informacion/informacion.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ReporteComponent } from './reporte/reporte.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GastoService } from './gasto.service';
+
+
+
+
 
 const rutas:Route[]=[
   {path:'informacion',component:InformacionComponent},
@@ -27,9 +33,10 @@ const rutas:Route[]=[
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(rutas)
   ],
-  providers: [],
+  providers: [GastoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
